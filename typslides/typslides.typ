@@ -38,7 +38,7 @@
   let subtext = []
 
   if authors != none {
-    subtext += text(20pt, fill:color-1, weight: "semibold")[#authors]
+    subtext += text(20pt, fill:color-1, weight: "regular")[#authors]
   }
 
   if info != none {
@@ -84,7 +84,7 @@
   set text(
     size: 18pt,
     hyphenate: true,
-    font: "Liberation Sans"
+    font: "Fira Sans"
   )
 
   set par(
