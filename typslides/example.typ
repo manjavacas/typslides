@@ -5,14 +5,19 @@
   theme: "bluey"
 )
 
-#front-slide()[
-  
+#front-slide(
+  title: [This is a sample presentation],
+  subtitle: [Using typslides],
+  authors: [Florence Foo, Nathan Nothing],
+  info: [Univeristy of Typstland]
+)
+
+#slide(
+  title: [This is my _Slide title_]
+)[
+  #lorem(50)
 ]
 
-#slide(title:[This is my _Slide title_])[
-  #lorem(100)
-]
-
-#focus-slide()[
+#focus-slide[
   This is an auto-resized _focus slide_.
 ]

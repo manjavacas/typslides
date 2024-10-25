@@ -1,7 +1,6 @@
 #import "utils.typ": *
 
-#let color-1 = state("color-1", black)
-#let color-2= state("color-2", none)
+#let theme-color= state("theme-color", none)
 
 #let typslides(
   ratio: "16-9",
@@ -9,7 +8,7 @@
   body
 ) = {
 
-  color-2.update(theme-colors.at(theme))
+  theme-color.update(theme-colors.at(theme))
 
   set text(font: "Fira Sans")
 
@@ -24,9 +23,20 @@
 //**************************************** Front Slide ****************************************\\
 
 #let front-slide(
-  body
-) = {
-  body
+  title: none,
+  subtitle: none,
+  authors: none,
+  info: none,
+) = context {
+
+  make-frontpage(
+    title,
+    subtitle,
+    authors,
+    info,
+    theme-color.get()
+  )
+  
 }
 
 //*************************************** Content Slide ***************************************\\
@@ -44,7 +54,7 @@
 ) = context {
 
   set page(
-    fill: color-2.get(),
+    fill: theme-color.get(),
     footer: none
   )
   
