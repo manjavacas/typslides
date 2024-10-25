@@ -17,7 +17,15 @@
 ]
 
 #slide()[
-  This is slide has no title.
+  - This slide has no title.
+  - #stress("Bold and coloured") text by using `#stress(text)`. 
+  - Theme color: #get-color, obtained with `#get-color`.
+
+  #pagebreak()
+  
+  #framed[This text has been written using `#framed(text)`. The background color is customisable.]
+
+  #framed(title:"Frame with title")[This text has been written using a framed textbox with `#framed(title:"Frame with title")[text]`.]
 ]
 
 #slide(title: "This is the slide title")[

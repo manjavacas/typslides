@@ -20,6 +20,54 @@
 }
 
 
+//************************************** Useful functions *************************************\\
+
+#let get-color = context {
+  theme-color.get()
+}
+
+#let stress(body) = context {
+  text(fill: theme-color.get(), weight: "semibold")[
+    #body
+  ] 
+}
+
+#let framed(title: none, back-color : rgb("fbf7ee"), content) = context {
+
+  set block(
+    width: 100%,
+    inset: (x: .45cm, top: .45cm, bottom: .5cm),
+    breakable: false,
+    above: .1cm,
+    below: .1cm
+  )
+  
+  if title != none {
+    stack(
+      block(
+        fill: theme-color.get(),
+        radius: (top: .2cm, bottom: 0cm),
+        stroke: 2pt)[
+          #text(weight: "semibold", fill: white)[#title]
+        ],
+      block(
+        radius: (top: 0cm, bottom: .2cm),
+        stroke: 2pt,
+        content
+      )
+    )
+  } else {
+    stack(
+      block(
+        fill: back-color,
+        radius: (top: .2cm, bottom: .2cm),
+        stroke: 2pt,
+        content
+      ) 
+    )
+  }
+}
+
 //**************************************** Front Slide ****************************************\\
 
 #let front-slide(
@@ -87,10 +135,23 @@
   title: [],
   back-color: white,
   body
-) = {
+) = context {
 
   set page(
-    fill: back-color
+    fill: back-color,
+    footer: [
+      #align(right)[
+        #let p = context counter(page).display(
+          "1/1",
+          both: true,
+        )
+        #text(weight: "regular", size: 12pt)[#p]
+      ]
+    ]
+  )
+
+  set list(
+    marker: text(theme-color.get(), [•])
   )
 
   set text(size:25pt)
