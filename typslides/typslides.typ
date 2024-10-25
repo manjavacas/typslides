@@ -44,6 +44,17 @@
 
 //**************************************** Title Slide ****************************************\\
 
+#let title-slide(
+  body
+) = context {
+  
+  set align(left + horizon)
+  set text(size: 40pt, weight: "semibold")
+
+  smallcaps(body)
+  v(-.75cm)
+  divider(color: theme-color.get())
+}
 
 //**************************************** Focus Slide ****************************************\\
 
@@ -65,7 +76,7 @@
     font: "Fira Sans"
   )
 
-  set align(center+horizon)
+  set align(center + horizon)
 
   resize-text(body)
 }

@@ -32,7 +32,7 @@
 
 //************************************************************************\\
 
-#let divider(color: none) = context {
+#let divider(color: none) = {
   line(
     length: 100%,
     stroke: 2.5pt + color

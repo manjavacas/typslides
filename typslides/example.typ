@@ -6,15 +6,21 @@
 )
 
 #front-slide(
-  title: [This is a sample presentation],
-  subtitle: [Using typslides],
-  authors: [Florence Foo, Nathan Nothing],
-  info: [Univeristy of Typstland]
+  title: "This is a sample presentation",
+  subtitle: "Using typslides",
+  authors: "Florence Foo, Nathan Nothing",
+  info: "Univeristy of Typstland"
 )
 
-#slide(
-  title: [This is my _Slide title_]
-)[
+#title-slide[
+  This is a title slide
+]
+
+#slide()[
+  This is slide has no title.
+]
+
+#slide(title: "This is the slide title")[
   #lorem(50)
 ]
 
