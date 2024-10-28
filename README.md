@@ -13,7 +13,7 @@ _Minimalistic [typst](https://typst.app/) slides!_
 
 This is a simple usage example:
 
-```
+```typst
 #import "@preview/typslides:1.0": *
 
 // Project configuration
