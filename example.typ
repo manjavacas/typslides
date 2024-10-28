@@ -2,14 +2,14 @@
 
 #show: typslides.with(
   ratio: "16-9",
-  theme: "bluey"
+  theme: "bluey",
 )
 
 #front-slide(
   title: "This is a sample presentation",
   subtitle: "Using typslides",
   authors: "Florence Foo, Nathan Nothing",
-  info: "Univeristy of Typstland"
+  info: "Univeristy of Typstland",
 )
 
 #table-of-contents()
@@ -20,14 +20,14 @@
 
 #slide()[
   - This slide has no title.
-  - #stress("Bold and coloured") text by using `#stress(text)`. 
+  - #stress("Bold and coloured") text by using `#stress(text)`.
   - Theme color: #get-color, obtained with `#get-color`.
   - These are some sample references: @typst, @typslides.
   - Link: #link("typst.app")
-  
+
   #framed[This text has been written using `#framed(text)`. The background color of the box is customisable.]
-  
-  #framed(title:"Frame with title")[This text has been written using `#framed(title:"Frame with title")[text]`.]
+
+  #framed(title: "Frame with title")[This text has been written using `#framed(title:"Frame with title")[text]`.]
 ]
 
 #focus-slide[

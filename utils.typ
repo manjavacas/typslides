@@ -1,11 +1,11 @@
 #let _theme-colors = (
-  bluey : rgb("3059AB"),
-  reddy : rgb("BF3D3D"),
-  greeny : rgb("28842F"),
-  yelly : rgb("C4853D"),
-  purply : rgb("862A70"),
+  bluey: rgb("3059AB"),
+  reddy: rgb("BF3D3D"),
+  greeny: rgb("28842F"),
+  yelly: rgb("C4853D"),
+  purply: rgb("862A70"),
   dusky: rgb("1F4289"),
-  darky: black
+  darky: black,
 )
 
 //************************************************************************\\
@@ -15,20 +15,20 @@
   let (height,) = measure(
     block(width: size.width, text(size: font-size)[#body]),
   )
-  
-  let max_height = size.height;
-  
+
+  let max_height = size.height
+
   while height > max_height {
-      font-size -= 0.2pt
-      height = measure(
-        block(width: size.width, text(size: font-size)[#body]),
-      ).height
+    font-size -= 0.2pt
+    height = measure(
+      block(width: size.width, text(size: font-size)[#body]),
+    ).height
   }
-  
+
   block(
-      height: height,
-      width: 100%,
-      text(size: font-size)[#body]
+    height: height,
+    width: 100%,
+    text(size: font-size)[#body],
   )
 })
 
@@ -37,34 +37,35 @@
 #let _divider(color: none) = {
   line(
     length: 100%,
-    stroke: 2.5pt + color
+    stroke: 2.5pt + color,
   )
 }
 
 //************************************************************************\\
 
 #let _slide-header(title, color) = {
-  set align(top)  
+  set align(top)
   rect(
-    fill: color, width: 100%, height: 
-    if title != none {
+    fill: color,
+    width: 100%,
+    height: if title != none {
       10%
     } else {
       5%
-    }, 
+    },
     inset: .55cm,
-    text(white, weight: "semibold", size: 24pt)[#h(1cm) #title]
+    text(white, weight: "semibold", size: 24pt)[#h(1cm) #title],
   )
 }
 
 //************************************************************************\\
 
 #let _make-frontpage(
-  title, 
+  title,
   subtitle,
   authors,
   info,
-  theme-color
+  theme-color,
 ) = {
 
   set align(left + horizon)
@@ -87,9 +88,9 @@
   }
 
   if info != none {
-    subtext += text(20pt, fill:theme-color, weight: "regular")[#v(-.15cm) #info]
+    subtext += text(20pt, fill: theme-color, weight: "regular")[#v(-.15cm) #info]
   }
-  
+
   _divider(color: theme-color)
   [#subtext]
 }
