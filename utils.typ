@@ -3,7 +3,9 @@
   reddy : rgb("BF3D3D"),
   greeny : rgb("28842F"),
   yelly : rgb("C4853D"),
-  purply : rgb("862A70")
+  purply : rgb("862A70"),
+  dusky: rgb("1F4289"),
+  darky: black
 )
 
 //************************************************************************\\
@@ -43,12 +45,16 @@
 
 #let slide-header(title, color) = {
   set align(top)  
-  if title != none {
-    rect(
-      fill: color, width: 100%, height: 10%, inset: .55cm,
-      text(white, weight: "semibold", size: 24pt)[#h(1cm) #title]
-    )
-  }
+  rect(
+    fill: color, width: 100%, height: 
+    if title != none {
+      10%
+    } else {
+      5%
+    }, 
+    inset: .55cm,
+    text(white, weight: "semibold", size: 24pt)[#h(1cm) #title]
+  )
 }
 
 //************************************************************************\\

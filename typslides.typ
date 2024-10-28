@@ -1,6 +1,7 @@
 #import "utils.typ": *
 
 #let theme-color= state("theme-color", none)
+#let sections = state("sections", ())
 
 #let typslides(
   ratio: "16-9",
@@ -16,11 +17,14 @@
     paper: "presentation-" + ratio
   )
 
+  show ref: it => context {
+    text(fill:theme-color.get())[#it]
+  }
+
   body
 }
 
-
-//************************************** Useful functions *************************************\\
+//*************************************** Aux functions ***************************************\\
 
 #let get-color = context {
   theme-color.get()
@@ -32,17 +36,15 @@
   ] 
 }
 
-#let framed(title: none, back-color : rgb("fbf7ee"), content) = context {
+#let framed(title: none, back-color : none, content) = context {
 
   set block(
     width: 100%,
-    inset: (x: .45cm, top: .45cm, bottom: .5cm),
+    inset: (x: .55cm, top: .5cm, bottom: .5cm),
     breakable: false,
     above: .1cm,
     below: .1cm
   )
-
-  set text(size: 18pt)
   
   if title != none {
     stack(
@@ -53,6 +55,13 @@
           #text(weight: "semibold", fill: white)[#title]
         ],
       block(
+        fill: {
+          if back-color != none {
+            back-color
+          } else {
+            white
+          }
+        },
         radius: (top: 0cm, bottom: .2cm),
         stroke: 2pt,
         content
@@ -61,13 +70,25 @@
   } else {
     stack(
       block(
-        fill: back-color,
+        fill: if back-color != none {
+            back-color
+        } else {
+            rgb("FBF7EE")
+        },
         radius: (top: .2cm, bottom: .2cm),
         stroke: 2pt,
         content
       ) 
     )
   }
+}
+
+#let register-section(name) = context {
+  let sect-page = here().position()
+  sections.update(sections => {
+    sections.push((body: name, loc: sect-page))
+    sections
+  })
 }
 
 //**************************************** Front Slide ****************************************\\
@@ -91,7 +112,28 @@
 
 //*************************************** Content Slide ***************************************\\
 
+#let table-of-contents(
+  title: "Contents"
+) = context {
 
+  // Adapted from: https://github.com/andreasKroepelin/polylux/blob/main/utils/utils.typ
+
+  text(size:42pt, weight: "bold")[
+    #smallcaps(title)
+    #v(-.9cm)
+    #divider(color: theme-color.get())
+  ]
+  
+  set text(size: 24pt)
+  set enum(numbering: (it => context text(fill:theme-color.get())[*#it.*])) 
+
+  let sections = sections.final()
+  pad(enum(
+    ..sections.map(section => link(section.loc, section.body))
+  ))
+
+  pagebreak()
+}
 
 //**************************************** Title Slide ****************************************\\
 
@@ -100,10 +142,12 @@
 ) = context {
   
   set align(left + horizon)
-  set text(size: 40pt, weight: "semibold")
+  show heading: text.with(size: 42pt, weight: "semibold")
 
-  smallcaps(body)
-  v(-.75cm)
+  register-section(body)
+
+  [= #smallcaps(body)]
+
   divider(color: theme-color.get())
 }
 
@@ -146,24 +190,54 @@
   
   set page(
     fill: back-color,
-    footer: [
+    header-ascent: 
+      if title != none {
+        62%
+      }
+      else {
+        77%
+      },
+    header: [
       #align(right)[
-        #text(weight: "regular", size: 12pt)[#page-num]
+        #text(
+          fill: white, 
+          weight: "semibold", 
+          size: 12pt
+        )[#page-num]
       ]
     ],
-    margin: (x: 1.5cm, top: 2.55cm, bottom: 2cm),
+    margin: (x: 1.5cm, top: 2.55cm, bottom: 1.1cm),
     background: place(
       slide-header(title, theme-color.get())
-    ),
+    )
   )
 
   set list(
     marker: text(theme-color.get(), [•])
   )
 
-  set text(size:21pt)
+  set text(size:20pt)
   set par(justify: true)
 
   body
-  
+}
+
+//**************************************** Bibliography ***************************************\\
+
+#let bibliography-slide(
+  bib-path,
+  title: "References"
+) = context {
+
+  set text(size:13pt)
+  set par(justify:true)
+
+  bibliography(
+    bib-path,
+    title: text(size:30pt)[
+      #title
+      #v(-.85cm)
+      #divider(color: theme-color.get())
+      #v(.5cm)]
+  )
 }
