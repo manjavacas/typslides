@@ -38,9 +38,7 @@
 
 #let stress(body) = (
   context {
-    text(fill: theme-color.get(), weight: "semibold")[
-      #body
-    ]
+    text(fill: theme-color.get(), weight: "semibold")[#body]
   }
 )
 
@@ -49,7 +47,7 @@
 
     set block(
       width: 100%,
-      inset: (x: .55cm, top: .5cm, bottom: .5cm),
+      inset: (x: .4cm, top: .5cm, bottom: .5cm),
       breakable: false,
       above: .1cm,
       below: .1cm,
@@ -242,6 +240,7 @@
 
     set text(size: 20pt)
     set par(justify: true)
+    set align(horizon)
 
     body
   }
