@@ -9,7 +9,7 @@
   body
 ) = {
 
-  theme-color.update(theme-colors.at(theme))
+  theme-color.update(_theme-colors.at(theme))
 
   set text(font: "Fira Sans")
 
@@ -18,6 +18,10 @@
   )
 
   show ref: it => context {
+    text(fill:theme-color.get())[#it]
+  }
+  
+  show link: it => context {
     text(fill:theme-color.get())[#it]
   }
 
@@ -100,7 +104,7 @@
   info: none,
 ) = context {
 
-  make-frontpage(
+  _make-frontpage(
     title,
     subtitle,
     authors,
@@ -121,11 +125,11 @@
   text(size:42pt, weight: "bold")[
     #smallcaps(title)
     #v(-.9cm)
-    #divider(color: theme-color.get())
+    #_divider(color: theme-color.get())
   ]
   
   set text(size: 24pt)
-  set enum(numbering: (it => context text(fill:theme-color.get())[*#it.*])) 
+  set enum(numbering: (it => context text(fill:black)[*#it.*])) 
 
   let sections = sections.final()
   pad(enum(
@@ -148,7 +152,7 @@
 
   [= #smallcaps(body)]
 
-  divider(color: theme-color.get())
+  _divider(color: theme-color.get())
 }
 
 //**************************************** Focus Slide ****************************************\\
@@ -172,7 +176,7 @@
 
   set align(center + horizon)
 
-  resize-text(body)
+  _resize-text(body)
 }
 
 //****************************************** Slide ********************************************\\
@@ -208,13 +212,15 @@
     ],
     margin: (x: 1.5cm, top: 2.55cm, bottom: 1.1cm),
     background: place(
-      slide-header(title, theme-color.get())
+      _slide-header(title, theme-color.get())
     )
   )
 
   set list(
     marker: text(theme-color.get(), [•])
   )
+
+  set enum(numbering: (it => context text(fill:theme-color.get())[*#it.*])) 
 
   set text(size:20pt)
   set par(justify: true)
@@ -229,15 +235,15 @@
   title: "References"
 ) = context {
 
-  set text(size:13pt)
+  set text(size:17pt)
   set par(justify:true)
 
   bibliography(
     bib-path,
     title: text(size:30pt)[
-      #title
+      #smallcaps(title)
       #v(-.85cm)
-      #divider(color: theme-color.get())
+      #_divider(color: theme-color.get())
       #v(.5cm)]
   )
 }

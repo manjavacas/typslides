@@ -23,6 +23,7 @@
   - #stress("Bold and coloured") text by using `#stress(text)`. 
   - Theme color: #get-color, obtained with `#get-color`.
   - These are some sample references: @typst, @typslides.
+  - Link: #link("typst.app")
   
   #framed[This text has been written using `#framed(text)`. The background color of the box is customisable.]
   

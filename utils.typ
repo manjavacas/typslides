@@ -1,4 +1,4 @@
-#let theme-colors = (
+#let _theme-colors = (
   bluey : rgb("3059AB"),
   reddy : rgb("BF3D3D"),
   greeny : rgb("28842F"),
@@ -10,7 +10,7 @@
 
 //************************************************************************\\
 
-#let resize-text(body) = layout(size => {
+#let _resize-text(body) = layout(size => {
   let font-size = text.size
   let (height,) = measure(
     block(width: size.width, text(size: font-size)[#body]),
@@ -34,7 +34,7 @@
 
 //************************************************************************\\
 
-#let divider(color: none) = {
+#let _divider(color: none) = {
   line(
     length: 100%,
     stroke: 2.5pt + color
@@ -43,7 +43,7 @@
 
 //************************************************************************\\
 
-#let slide-header(title, color) = {
+#let _slide-header(title, color) = {
   set align(top)  
   rect(
     fill: color, width: 100%, height: 
@@ -59,7 +59,7 @@
 
 //************************************************************************\\
 
-#let make-frontpage(
+#let _make-frontpage(
   title, 
   subtitle,
   authors,
@@ -90,6 +90,6 @@
     subtext += text(20pt, fill:theme-color, weight: "regular")[#v(-.15cm) #info]
   }
   
-  divider(color: theme-color)
+  _divider(color: theme-color)
   [#subtext]
 }
