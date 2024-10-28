@@ -41,6 +41,8 @@
     above: .1cm,
     below: .1cm
   )
+
+  set text(size: 18pt)
   
   if title != none {
     stack(
@@ -90,6 +92,7 @@
 //*************************************** Content Slide ***************************************\\
 
 
+
 //**************************************** Title Slide ****************************************\\
 
 #let title-slide(
@@ -114,7 +117,6 @@
 
   set page(
     fill: theme-color.get(),
-    footer: none
   )
   
   set text(
@@ -132,33 +134,36 @@
 //****************************************** Slide ********************************************\\
 
 #let slide(
-  title: [],
+  title: none,
   back-color: white,
   body
 ) = context {
-
+  
+  let page-num = context counter(page).display(
+    "1/1",
+    both: true,
+  )
+  
   set page(
     fill: back-color,
     footer: [
       #align(right)[
-        #let p = context counter(page).display(
-          "1/1",
-          both: true,
-        )
-        #text(weight: "regular", size: 12pt)[#p]
+        #text(weight: "regular", size: 12pt)[#page-num]
       ]
-    ]
+    ],
+    margin: (x: 1.5cm, top: 2.55cm, bottom: 2cm),
+    background: place(
+      slide-header(title, theme-color.get())
+    ),
   )
 
   set list(
     marker: text(theme-color.get(), [•])
   )
 
-  set text(size:25pt)
+  set text(size:21pt)
   set par(justify: true)
 
-  [
-    *#title*\
-    #body
-  ]
+  body
+  
 }

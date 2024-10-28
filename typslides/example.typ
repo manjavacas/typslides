@@ -20,8 +20,6 @@
   - This slide has no title.
   - #stress("Bold and coloured") text by using `#stress(text)`. 
   - Theme color: #get-color, obtained with `#get-color`.
-
-  #pagebreak()
   
   #framed[This text has been written using `#framed(text)`. The background color is customisable.]
 
@@ -29,7 +27,7 @@
 ]
 
 #slide(title: "This is the slide title")[
-  #lorem(50)
+  #lorem(200)
 ]
 
 #focus-slide[

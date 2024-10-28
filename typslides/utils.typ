@@ -41,6 +41,18 @@
 
 //************************************************************************\\
 
+#let slide-header(title, color) = {
+  set align(top)  
+  if title != none {
+    rect(
+      fill: color, width: 100%, height: 10%, inset: .55cm,
+      text(white, weight: "semibold", size: 24pt)[#h(1cm) #title]
+    )
+  }
+}
+
+//************************************************************************\\
+
 #let make-frontpage(
   title, 
   subtitle,
