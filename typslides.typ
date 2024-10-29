@@ -32,31 +32,36 @@
 
 //*************************************** Aux functions ***************************************\\
 
-#let get-color = context {
-  theme-color.get()
-}
-
 #let stress(body) = (
   context {
     text(fill: theme-color.get(), weight: "semibold")[#body]
   }
 )
 
-#let framed(title: none, back-color: none, content) = (
+//***************************************************\\
+
+#let framed(
+  title: none,
+  back-color: none,
+  content,
+) = (
   context {
 
+    let w = auto
+
     set block(
-      width: 100%,
-      inset: (x: .4cm, top: .5cm, bottom: .5cm),
+      inset: (x: .6cm, y: .6cm),
       breakable: false,
       above: .1cm,
       below: .1cm,
     )
 
     if title != none {
+      set block(width: 100%)
       stack(
         block(
           fill: theme-color.get(),
+          inset: (x: .6cm, y: .55cm),
           radius: (top: .2cm, bottom: 0cm),
           stroke: 2pt,
         )[
@@ -78,6 +83,7 @@
     } else {
       stack(
         block(
+          width: auto,
           fill: if back-color != none {
             back-color
           } else {
@@ -92,7 +98,29 @@
   }
 )
 
-#let register-section(name) = (
+//***************************************************\\
+
+#let grayed(
+  text-size: 20pt,
+  content,
+) = {
+  set align(center + horizon)
+  set text(size: text-size)
+  block(
+    fill: rgb("#F3F2F0"),
+    inset: (x: .8cm, y: .8cm),
+    breakable: false,
+    above: .1cm,
+    below: .1cm,
+    radius: (top: .2cm, bottom: .2cm),
+  )[#content]
+}
+
+//***************************************************\\
+
+#let register-section(
+  name,
+) = (
   context {
     let sect-page = here().position()
     sections.update(sections => {
@@ -127,6 +155,7 @@
 
 #let table-of-contents(
   title: "Contents",
+  text-size: 23pt,
 ) = (
   context {
 
@@ -138,8 +167,10 @@
       #_divider(color: theme-color.get())
     ]
 
-    set text(size: 24pt)
+    set text(size: text-size)
     set enum(numbering: (it => context text(fill: black)[*#it.*]))
+
+    show linebreak: none
 
     let sections = sections.final()
     pad(
@@ -147,6 +178,21 @@
         ..sections.map(section => link(section.loc, section.body)),
       ),
     )
+
+    // Using the default outline() function...
+    //
+    // set outline(title: none)
+    //
+    // show outline.entry: it => (
+    //   context {
+    //     show linebreak: none
+    //     let num = text(weight: "bold", fill: theme-color.get())[#it.body.fields().at("children").first()]
+    //     let title = text(style: "normal")[#it.body.fields().at("children").last()]
+    //     [#num #title]
+    //   }
+    // )
+    //
+    // outline()
 
     pagebreak()
   }
@@ -156,13 +202,15 @@
 
 #let title-slide(
   body,
+  text-size: 42pt,
 ) = (
   context {
 
-    set align(left + horizon)
-    show heading: text.with(size: 42pt, weight: "semibold")
-
     register-section(body)
+
+    show heading: text.with(size: text-size, weight: "semibold")
+
+    set align(left + horizon)
 
     [= #smallcaps(body)]
 

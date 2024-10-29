@@ -1,4 +1,4 @@
-#import "typslides.typ": *
+#import "@preview/typslides:1.1.1": *
 
 #show: typslides.with(
   ratio: "16-9",
