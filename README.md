@@ -64,6 +64,7 @@ This is a simple usage example:
   #lorem(80)
 ]
 
+// Bibliography
 #bibliography-slide("bibliography.bib")
 ```
 
