@@ -27,6 +27,8 @@
     }
   )
 
+  set enum(numbering: (it => context text(fill: black)[*#it.*]))
+
   body
 }
 
@@ -168,7 +170,6 @@
     ]
 
     set text(size: text-size)
-    set enum(numbering: (it => context text(fill: black)[*#it.*]))
 
     show linebreak: none
 
@@ -284,8 +285,6 @@
       marker: text(theme-color.get(), [•]),
     )
 
-    set enum(numbering: (it => context text(fill: theme-color.get())[*#it.*]))
-
     set text(size: 20pt)
     set par(justify: true)
     set align(horizon)
@@ -299,6 +298,7 @@
 #let bibliography-slide(
   bib-path,
   title: "References",
+  style: "ieee",
 ) = (
   context {
 
@@ -312,6 +312,7 @@
         #v(-.85cm)
         #_divider(color: theme-color.get())
         #v(.5cm)],
+      style: style,
     )
   }
 )

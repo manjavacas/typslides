@@ -14,7 +14,7 @@ _Minimalistic [typst](https://typst.app/) slides!_
 This is a simple usage example:
 
 ```typst
-#import "@preview/typslides:1.1.1": *
+#import "@preview/typslides:1.2.0": *
 
 // Project configuration
 #show: typslides.with(
@@ -42,14 +42,14 @@ This is a simple usage example:
 
 // A simple slide
 #slide()[
-  - This slide has no title.
-  - #stress("Bold and coloured") text by using `#stress(text)`. 
-  - Theme color: #get-color, obtained with `#get-color`.
-  - Link: #link("typst.app")
-  
+  - This is a simple `slide` with no title.
+  - #stress("Bold and coloured") text by using `#stress(text)`.
+  - Sample link: #link("typst.app")
+  - Sample references: @typst, @typslides.
+
   #framed[This text has been written using `#framed(text)`. The background color of the box is customisable.]
-  
-  #framed(title:"Frame with title")[This text has been written using `#framed(title:"Frame with title")[text]`.]
+
+  #framed(title: "Frame with title")[This text has been written using `#framed(title:"Frame with title")[text]`.]
 ]
 
 // Focus slide
@@ -59,13 +59,14 @@ This is a simple usage example:
 
 // Slide with title
 #slide(title: "This is the slide title")[
-  #lorem(165)
+  #grayed([This is a `grayed` text.])\
+  #grayed($P_t = alpha - 1 / (sqrt(x) + f(y))$)\
+  #lorem(80)
 ]
 
-// bibliography-slide is also available for references: 
-// #bibliography-slide("bibliography.bib")
+#bibliography-slide("bibliography.bib")
 ```
 
 # Sample slides
 
-<kbd><img src="img/slide-1.jpg" width="300"></kbd> <kbd><img src="img/slide-2.jpg" width="300"></kbd> <kbd><img src="img/slide-3.jpg" width="300"></kbd> <kbd><img src="img/slide-4.jpg" width="300"></kbd> <kbd><img src="img/slide-5.jpg" width="300"></kbd> <kbd><img src="img/slide-6.jpg" width="300"></kbd> <kbd><img src="img/slide-7.jpg" width="300"></kbd> <kbd><img src="img/slide-8.jpg" width="300"></kbd>
+<kbd><img src="img/slide-1.jpg" width="300"></kbd> <kbd><img src="img/slide-2.jpg" width="300"></kbd> <kbd><img src="img/slide-3.jpg" width="300"></kbd> <kbd><img src="img/slide-4.jpg" width="300"></kbd> <kbd><img src="img/slide-5.jpg" width="300"></kbd> <kbd><img src="img/slide-6.jpg" width="300"></kbd> <kbd><img src="img/slide-7.jpg" width="300"></kbd>

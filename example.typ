@@ -1,4 +1,4 @@
-#import "@preview/typslides:1.1.1": *
+#import "./typslides.typ": *
 
 #show: typslides.with(
   ratio: "16-9",
@@ -7,23 +7,22 @@
 
 #front-slide(
   title: "This is a sample presentation",
-  subtitle: "Using typslides",
-  authors: "Florence Foo, Nathan Nothing",
-  info: "Univeristy of Typstland",
+  subtitle: [Using _typslides_],
+  authors: "Antonio Manjavacas",
+  info: [#link("https://github.com/manjavacas/typslides")],
 )
 
 #table-of-contents()
 
 #title-slide[
-  This is a title slide
+  This is a _Title slide_
 ]
 
 #slide()[
-  - This slide has no title.
+  - This is a simple `slide` with no title.
   - #stress("Bold and coloured") text by using `#stress(text)`.
-  - Theme color: #get-color, obtained with `#get-color`.
-  - These are some sample references: @typst, @typslides.
-  - Link: #link("typst.app")
+  - Sample link: #link("typst.app")
+  - Sample references: @typst, @typslides.
 
   #framed[This text has been written using `#framed(text)`. The background color of the box is customisable.]
 
@@ -34,12 +33,10 @@
   This is an auto-resized _focus slide_.
 ]
 
-#title-slide[
-  Another title slide
-]
-
 #slide(title: "This is the slide title")[
-  #lorem(165)
+  #grayed([This is a `grayed` text.])\
+  #grayed($P_t = alpha - 1 / (sqrt(x) + f(y))$)\
+  #lorem(80)
 ]
 
 #bibliography-slide("bibliography.bib")
