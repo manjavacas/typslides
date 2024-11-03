@@ -161,8 +161,6 @@
 ) = (
   context {
 
-    // Adapted from: https://github.com/andreasKroepelin/polylux/blob/main/utils/utils.typ
-
     text(size: 42pt, weight: "bold")[
       #smallcaps(title)
       #v(-.9cm)
