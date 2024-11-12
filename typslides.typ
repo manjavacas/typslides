@@ -112,8 +112,8 @@
     fill: rgb("#F3F2F0"),
     inset: (x: .8cm, y: .8cm),
     breakable: false,
-    above: .1cm,
-    below: .1cm,
+    above: .75cm,
+    below: .15cm,
     radius: (top: .2cm, bottom: .2cm),
   )[#content]
 }
@@ -214,6 +214,8 @@
     [= #smallcaps(body)]
 
     _divider(color: theme-color.get())
+
+    pagebreak()
   }
 )
 
@@ -260,34 +262,52 @@
     set page(
       fill: back-color,
       header-ascent: if title != none {
-        62%
+        15%
       } else {
-        77%
+        45%
       },
-      header: [
-        #align(right)[
-          #text(
-            fill: white,
-            weight: "semibold",
-            size: 12pt,
-          )[#page-num]
-        ]
-      ],
-      margin: (x: 1.5cm, top: 2.55cm, bottom: 1.1cm),
-      background: place(
-        _slide-header(title, theme-color.get()),
-      ),
+      margin: 0cm
+      // margin: (x: 1.5cm, top: 1cm, bottom: 1cm),
     )
 
     set list(
       marker: text(theme-color.get(), [•]),
     )
 
+    align(left + top)[
+      #rect(
+        fill: theme-color.get(),
+        width: 100%,
+        inset: .47cm,
+        height: if title != none {
+          1.5cm
+        } else {
+          .95cm
+        },
+        [
+          #text(white, weight: "semibold", size: 24pt)[#h(.6cm) #title]
+          #let v-num = -1.2cm
+          #if title != none {
+            v-num = -1.5cm
+          }
+          #align(right)[
+            #text(
+              fill: white,
+              weight: "semibold",
+              size: 12pt,
+            )[#v(v-num) #page-num]
+          ]
+        ],
+      )
+    ]
+
     set text(size: 20pt)
     set par(justify: true)
-    set align(horizon)
 
-    body
+    block(
+      inset: (x: 1.2cm, bottom: 1.1cm, top: .6cm),
+      body,
+    )
   }
 )
 

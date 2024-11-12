@@ -1,4 +1,4 @@
-#import "./typslides.typ": *
+#import "@preview/typslides:1.2.0": *
 
 #show: typslides.with(
   ratio: "16-9",
@@ -34,9 +34,9 @@
 ]
 
 #slide(title: "This is the slide title")[
-  #grayed([This is a `grayed` text.])\
+  #grayed([This is a `#grayed` text.])\
   #grayed($P_t = alpha - 1 / (sqrt(x) + f(y))$)\
-  #lorem(80)
+  #lorem(50)
 ]
 
 #bibliography-slide("bibliography.bib")

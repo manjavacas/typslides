@@ -44,14 +44,13 @@
 //************************************************************************\\
 
 #let _slide-header(title, color) = {
-  set align(top)
   rect(
     fill: color,
     width: 100%,
     height: if title != none {
-      10%
+      1.5cm
     } else {
-      5%
+      .9cm
     },
     inset: .55cm,
     text(white, weight: "semibold", size: 24pt)[#h(.2cm) #title],
@@ -93,4 +92,6 @@
 
   _divider(color: theme-color)
   [#subtext]
+
+  pagebreak()
 }
