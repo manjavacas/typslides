@@ -93,5 +93,5 @@
   _divider(color: theme-color)
   [#subtext]
 
-  pagebreak()
+  // pagebreak()
 }
