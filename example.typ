@@ -23,7 +23,7 @@
 ]
 
 // A simple slide
-#slide()[
+#slide[
   - This is a simple `slide` with no title.
   - #stress("Bold and coloured") text by using `#stress(text)`.
   - Sample link: #link("typst.app")
