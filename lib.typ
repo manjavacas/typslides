@@ -5,6 +5,7 @@
   title-slide,
   slide,
   focus-slide,
+  blank-slide,
   bibliography-slide,
   framed,
   grayed,

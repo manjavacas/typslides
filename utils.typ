@@ -48,12 +48,12 @@
     fill: color,
     width: 100%,
     height: if title != none {
-      1.5cm
+      1.6cm
     } else {
-      .9cm
+      .95cm
     },
-    inset: .55cm,
-    text(white, weight: "semibold", size: 24pt)[#h(.2cm) #title],
+    inset: .6cm,
+    text(white, weight: "semibold", size: 24pt)[#h(.1cm) #title],
   )
 }
 
@@ -93,5 +93,4 @@
   _divider(color: theme-color)
   [#subtext]
 
-  // pagebreak()
 }

@@ -13,7 +13,7 @@
 
   set text(font: "Fira Sans")
 
-  set page(paper: "presentation-" + ratio)
+  set page(paper: "presentation-" + ratio, fill: white)
 
   show ref: it => (
     context {
@@ -103,7 +103,7 @@
 //***************************************************\\
 
 #let grayed(
-  text-size: 20pt,
+  text-size: 24pt,
   content,
 ) = {
   set align(center + horizon)
@@ -112,8 +112,8 @@
     fill: rgb("#F3F2F0"),
     inset: (x: .8cm, y: .8cm),
     breakable: false,
-    above: .75cm,
-    below: .15cm,
+    above: .9cm,
+    below: .9cm,
     radius: (top: .2cm, bottom: .2cm),
   )[#content]
 }
@@ -262,52 +262,74 @@
     set page(
       fill: back-color,
       header-ascent: if title != none {
-        15%
+        65%
       } else {
-        45%
+        66%
       },
-      margin: 0cm
-      // margin: (x: 1.5cm, top: 1cm, bottom: 1cm),
+      header: [
+        #align(right)[
+          #text(
+            fill: white,
+            weight: "semibold",
+            size: 12pt,
+          )[#page-num]
+        ]
+      ],
+      margin: if title != none {
+        (x: 1.6cm, top: 2.5cm, bottom: 1.2cm)
+      } else {
+        (x: 1.6cm, top: 1.75cm, bottom: 1.2cm)
+      },
+      background: place(
+        _slide-header(title, theme-color.get()),
+      ),
     )
 
     set list(
       marker: text(theme-color.get(), [•]),
     )
 
-    align(left + top)[
-      #rect(
-        fill: theme-color.get(),
-        width: 100%,
-        inset: .47cm,
-        height: if title != none {
-          1.5cm
-        } else {
-          .95cm
-        },
-        [
-          #text(white, weight: "semibold", size: 24pt)[#h(.6cm) #title]
-          #let v-num = -1.2cm
-          #if title != none {
-            v-num = -1.5cm
-          }
-          #align(right)[
-            #text(
-              fill: white,
-              weight: "semibold",
-              size: 12pt,
-            )[#v(v-num) #page-num]
-          ]
-        ],
-      )
-    ]
+    set enum(numbering: (it => context text(fill: theme-color.get())[*#it.*]))
 
     set text(size: 20pt)
     set par(justify: true)
+    set align(horizon)
 
-    block(
-      inset: (x: 1.2cm, bottom: 1.1cm, top: .6cm),
-      body,
+    v(0cm) // avoids header breaking if body is empty
+    body
+  }
+)
+
+//**************************************** Blank slide ****************************************\\
+
+#let blank-slide(body) = (
+  context {
+
+    let page-num = context counter(page).display(
+      "1/1",
+      both: true,
     )
+
+    set page(header: [
+      #align(right)[
+        #text(
+          fill: theme-color.get(),
+          weight: "semibold",
+          size: 12pt,
+        )[#page-num]
+      ]
+    ])
+
+    set list(
+      marker: text(theme-color.get(), [•]),
+    )
+
+    set enum(numbering: (it => context text(fill: theme-color.get())[*#it.*]))
+
+    set text(size: 20pt)
+    set par(justify: true)
+    set align(horizon)
+    body
   }
 )
 
