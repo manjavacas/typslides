@@ -53,14 +53,12 @@
   #text(fill: rgb("1F4289"), weight: "bold")[dusky]
   #text(fill: black, weight: "bold")[darky]
 
-
   ```
   #show: typslides.with(
     ratio: "16-9",
     theme: "bluey",
   )
   ```
-
 ]
 
 // Slide with title

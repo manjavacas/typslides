@@ -68,7 +68,6 @@ This is a simple usage example:
   #text(fill: rgb("862A70"), weight: "bold")[purply]
   #text(fill: rgb("1F4289"), weight: "bold")[dusky]
   #text(fill: black, weight: "bold")[darky]
-
 ]
 
 // Slide with title
