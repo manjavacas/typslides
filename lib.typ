@@ -10,4 +10,10 @@
   framed,
   grayed,
   stress,
+  bluey,
+  reddy,
+  greeny,
+  yelly,
+  purply,
+  dusky,
 )

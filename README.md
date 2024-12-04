@@ -7,14 +7,14 @@
 [![Release](https://badgen.net/github/release/manjavacas/typslides)]()
 ![GitHub Repo stars](https://img.shields.io/github/stars/manjavacas/typslides)
 
-_Minimalistic [typst](https://typst.app/) slides!_
+Minimalistic [typst](https://typst.app/) slides!
 
 # Quickstart
 
 This is a simple usage example:
 
 ```typst
-#import "@preview/typslides:1.2.1": *
+#import "@preview/typslides:1.2.2": *
 
 // Project configuration
 #show: typslides.with(
@@ -43,7 +43,7 @@ This is a simple usage example:
   - This is a simple `slide` with no title.
   - #stress("Bold and coloured") text by using `#stress(text)`.
   - Sample link: #link("typst.app")
-  - Sample references: @typst, @typslides.
+  - Sample references: @typst, @typslides.#footnote[Bibliography only works when using typslides *locally*.]
 
   #framed[This text has been written using `#framed(text)`. The background color of the box is customisable.]
 
@@ -61,13 +61,9 @@ This is a simple usage example:
 
   - Available #stress[themes]:
 
-  #text(fill: rgb("3059AB"), weight: "bold")[bluey]
-  #text(fill: rgb("BF3D3D"), weight: "bold")[greeny]
-  #text(fill: rgb("28842F"), weight: "bold")[reddy]
-  #text(fill: rgb("C4853D"), weight: "bold")[yelly]
-  #text(fill: rgb("862A70"), weight: "bold")[purply]
-  #text(fill: rgb("1F4289"), weight: "bold")[dusky]
-  #text(fill: black, weight: "bold")[darky]
+  #framed(back-color: white)[
+    #bluey("bluey"), #reddy("reddy"), #greeny("greeny"), #yelly("yelly"), #purply("purply"), #dusky("dusky"), darky.
+  ]
 ]
 
 // Slide with title
@@ -78,8 +74,8 @@ This is a simple usage example:
   #lorem(20)
 ]
 
-// Bibliography
-#bibliography-slide("bibliography.bib")
+// Bibliography (not available via API)
+// #bibliography-slide("bibliography.bib")
 ```
 
 # Sample slides
