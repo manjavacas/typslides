@@ -14,7 +14,7 @@ Minimalistic [typst](https://typst.app/) slides!
 This is a simple usage example:
 
 ```typst
-#import "@preview/typslides:1.2.2": *
+#import "@preview/typslides:1.2.3": *
 
 // Project configuration
 #show: typslides.with(
@@ -43,7 +43,6 @@ This is a simple usage example:
   - This is a simple `slide` with no title.
   - #stress("Bold and coloured") text by using `#stress(text)`.
   - Sample link: #link("typst.app")
-  - Sample references: @typst, @typslides.#footnote[Bibliography only works when using typslides *locally*.]
 
   #framed[This text has been written using `#framed(text)`. The background color of the box is customisable.]
 
@@ -59,7 +58,7 @@ This is a simple usage example:
 #blank-slide[
   - This is a `#blank-slide`.
 
-  - Available #stress[themes]:
+  - Available #stress[themes]#footnote[Use them as *color* functions! e.g., `#reddy("your text")`]:
 
   #framed(back-color: white)[
     #bluey("bluey"), #reddy("reddy"), #greeny("greeny"), #yelly("yelly"), #purply("purply"), #dusky("dusky"), darky.
@@ -68,14 +67,19 @@ This is a simple usage example:
 
 // Slide with title
 #slide(title: "This is the slide title")[
-  #lorem(20)
   #grayed([This is a `#grayed` text. Useful for equations.])
   #grayed($ P_t = alpha - 1 / (sqrt(x) + f(y)) $)
-  #lorem(20)
+
+  Sample references: @typst, @typslides.
+  - Add your #stress[bibliography slide]!
+
+    1. `#let bib = bibliography("you_bibliography_file.bib")`
+    2. `#bibliography-slide(bib)`
 ]
 
-// Bibliography (not available via API)
-// #bibliography-slide("bibliography.bib")
+// Bibliography
+#let bib = bibliography("bibliography.bib")
+#bibliography-slide(bib)
 ```
 
 # Sample slides
