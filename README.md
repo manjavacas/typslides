@@ -7,7 +7,11 @@
 [![Release](https://badgen.net/github/release/manjavacas/typslides)]()
 ![GitHub Repo stars](https://img.shields.io/github/stars/manjavacas/typslides)
 
-Minimalistic [typst](https://typst.app/) slides!
+Typslides is a minimalist package for creating presentations in [typst](https://typst.app/), designed to offer a simple and fast user experience. Structure your content with different slide styles and aesthetic elements. With a clear and concise syntax, Typslides makes it easy to create elegant and well-organized presentations.
+
+Available **themes**:
+
+🔵 **bluey**, 🔴 **reddy**, 🟢 **greeny**, 🟡 **yelly**, 🟣 **purply**, 🔵 **dusky**, ⚫ **darky**
 
 # Quickstart
 
