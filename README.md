@@ -2,16 +2,24 @@
     <img src="img/logo.png" alt="logo" width="400"/>
 </p>
 
-![License](https://img.shields.io/badge/license-GPLv3-blue)
-[![Contributors](https://badgen.net/github/contributors/manjavacas/typslides)]()
-[![Release](https://badgen.net/github/release/manjavacas/typslides)]()
-![GitHub Repo stars](https://img.shields.io/github/stars/manjavacas/typslides)
+<p align="center">
+    <img src="https://img.shields.io/badge/license-GPLv3-blue" alt="License">
+    <img src="https://badgen.net/github/contributors/manjavacas/typslides" alt="Contributors">
+    <img src="https://badgen.net/github/release/manjavacas/typslides" alt="Release">
+    <img src="https://img.shields.io/github/stars/manjavacas/typslides" alt="GitHub Repo stars">
+</p>
 
-Typslides is a minimalist package for creating presentations in [typst](https://typst.app/), designed to offer a simple and fast user experience. Structure your content with different slide styles and aesthetic elements. With a clear and concise syntax, Typslides makes it easy to create elegant and well-organized presentations.
+<p align="justify">
+<strong>Typslides</strong> is a minimalist package for creating presentations with <a href="https://typst.app/">typst</a>, designed to offer a simple and fast user experience. Structure your content with different slide styles and aesthetic elements. With a clear and concise syntax, Typslides makes it easy to create elegant and well-organized presentations.
+</p>
 
-Available **themes**:
+<p align="justify">
+Available <strong>themes</strong>:
+</p>
 
-🔵 **bluey**, 🔴 **reddy**, 🟢 **greeny**, 🟡 **yelly**, 🟣 **purply**, 🔵 **dusky**, ⚫ **darky**
+<p align="center">
+🔵 <strong>bluey</strong>   🔴 <strong>reddy</strong>   🟢 <strong>greeny</strong>   🟡 <strong>yelly</strong>   🟣 <strong>purply</strong>   🔵 <strong>dusky</strong>   ⚫ <strong>darky</strong>
+</p>
 
 # Quickstart
 
