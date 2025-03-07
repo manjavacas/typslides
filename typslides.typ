@@ -11,7 +11,6 @@
   theme-color.update(_theme-colors.at(theme))
 
   set text(font: "Fira Sans")
-
   set page(paper: "presentation-" + ratio, fill: white)
 
   show ref: it => (
@@ -39,11 +38,7 @@
 
 //*************************************** Aux functions ***************************************\\
 
-#let stress(body) = (
-  context {
-    text(fill: theme-color.get(), weight: "semibold")[#body]
-  }
-)
+// Theme colors
 
 #let bluey(body) = (text(fill: rgb("3059AB"))[#body])
 #let greeny(body) = (text(fill: rgb("BF3D3D"))[#body])
@@ -51,6 +46,14 @@
 #let yelly(body) = (text(fill: rgb("C4853D"))[#body])
 #let purply(body) = (text(fill: rgb("862A70"))[#body])
 #let dusky(body) = (text(fill: rgb("1F4289"))[#body])
+
+//***************************************************\\
+
+#let stress(body) = (
+  context {
+    text(fill: theme-color.get(), weight: "semibold")[#body]
+  }
+)
 
 //***************************************************\\
 
@@ -110,6 +113,26 @@
     }
   }
 )
+
+//***************************************************\\
+
+// Source: https://github.com/polylux-typ/polylux/blob/main/src/toolbox/toolbox-impl.typ
+
+#let cols(columns: none, gutter: 1em, ..bodies) = {
+  let bodies = bodies.pos()
+
+  let columns = if columns == none {
+    (1fr,) * bodies.len()
+  } else {
+    columns
+  }
+
+  if columns.len() != bodies.len() {
+    panic("Number of columns must match number of content arguments")
+  }
+
+  grid(columns: columns, gutter: gutter, ..bodies)
+}
 
 //***************************************************\\
 
@@ -180,26 +203,7 @@
     show linebreak: none
 
     let sections = sections.final()
-    pad(
-      enum(
-        ..sections.map(section => link(section.loc, section.body)),
-      ),
-    )
-
-    // Using the default outline() function...
-    //
-    // set outline(title: none)
-    //
-    // show outline.entry: it => (
-    //   context {
-    //     show linebreak: none
-    //     let num = text(weight: "bold", fill: theme-color.get())[#it.body.fields().at("children").first()]
-    //     let title = text(style: "normal")[#it.body.fields().at("children").last()]
-    //     [#num #title]
-    //   }
-    // )
-    //
-    // outline()
+    pad(enum(..sections.map(section => link(section.loc, section.body))))
 
     pagebreak()
   }
@@ -234,9 +238,7 @@
   body,
 ) = (
   context {
-    set page(
-      fill: theme-color.get(),
-    )
+    set page(fill: theme-color.get())
 
     set text(
       weight: "semibold",
@@ -285,14 +287,10 @@
       } else {
         (x: 1.6cm, top: 1.75cm, bottom: 1.2cm)
       },
-      background: place(
-        _slide-header(title, theme-color.get()),
-      ),
+      background: place(_slide-header(title, theme-color.get())),
     )
 
-    set list(
-      marker: text(theme-color.get(), [•]),
-    )
+    set list(marker: text(theme-color.get(), [•]))
 
     set enum(numbering: (it => context text(fill: theme-color.get())[*#it.*]))
 
@@ -314,19 +312,19 @@
       both: true,
     )
 
-    set page(header: [
-      #align(right)[
-        #text(
-          fill: theme-color.get(),
-          weight: "semibold",
-          size: 12pt,
-        )[#page-num]
-      ]
-    ])
-
-    set list(
-      marker: text(theme-color.get(), [•]),
+    set page(
+      header: [
+        #align(right)[
+          #text(
+            fill: theme-color.get(),
+            weight: "semibold",
+            size: 12pt,
+          )[#page-num]
+        ]
+      ],
     )
+
+    set list(marker: text(theme-color.get(), [•]))
 
     set enum(numbering: (it => context text(fill: theme-color.get())[*#it.*]))
 
@@ -339,30 +337,6 @@
 
 //**************************************** Bibliography ***************************************\\
 
-// You can use this locally...
-// #let bibliography-slide(
-//   bib-path,
-//   title: "References",
-//   style: "ieee",
-// ) = (
-//   context {
-
-//     set text(size: 17pt)
-//     set par(justify: true)
-
-//     bibliography(
-//       bib-path,
-//       title: text(size: 30pt)[
-//         #smallcaps(title)
-//         #v(-.85cm)
-//         #_divider(color: theme-color.get())
-//         #v(.5cm)],
-//       style: style,
-//     )
-//   }
-// )
-//
-
 #let bibliography-slide(
   bib-call,
   title: "References",
@@ -371,9 +345,7 @@
     set text(size: 19pt)
     set par(justify: true)
 
-    set bibliography(
-      title: text(size: 30pt)[#smallcaps(title) #v(-.85cm) #_divider(color: theme-color.get()) #v(.5cm)],
-    )
+    set bibliography(title: text(size: 30pt)[#smallcaps(title) #v(-.85cm) #_divider(color: theme-color.get()) #v(.5cm)])
 
     bib-call
   }

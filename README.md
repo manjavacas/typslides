@@ -26,7 +26,7 @@ Available <strong>themes</strong>:
 This is a simple usage example:
 
 ```typst
-#import "@preview/typslides:1.2.4": *
+#import "@preview/typslides:1.2.5": *
 
 // Project configuration
 #show: typslides.with(
@@ -89,6 +89,18 @@ This is a simple usage example:
     2. `#bibliography-slide(bib)`
 ]
 
+// Columns
+#slide(title: "Columns")[
+  #cols(columns: (2fr, 1fr, 2fr), gutter: 2em)[
+    #grayed[Columns can be included using `#cols[...][...]`]
+  ][
+    #grayed[And this is]
+  ][
+    #grayed[an example.]
+  ]
+  - Custom spacing: `#cols(columns: (2fr, 1fr, 2fr), gutter: 2em)[...]`
+]
+
 // Bibliography
 #let bib = bibliography("bibliography.bib")
 #bibliography-slide(bib)
@@ -96,4 +108,4 @@ This is a simple usage example:
 
 # Sample slides
 
-<kbd><img src="img/slide-1.svg" width="300"></kbd> <kbd><img src="img/slide-2.svg" width="300"></kbd> <kbd><img src="img/slide-3.svg" width="300"></kbd> <kbd><img src="img/slide-4.svg" width="300"></kbd> <kbd><img src="img/slide-5.svg" width="300"></kbd> <kbd><img src="img/slide-6.svg" width="300"></kbd> <kbd><img src="img/slide-7.svg" width="300"></kbd> <kbd><img src="img/slide-8.svg" width="300"></kbd>
+<kbd><img src="img/slide-1.svg" width="300"></kbd> <kbd><img src="img/slide-2.svg" width="300"></kbd> <kbd><img src="img/slide-3.svg" width="300"></kbd> <kbd><img src="img/slide-4.svg" width="300"></kbd> <kbd><img src="img/slide-5.svg" width="300"></kbd> <kbd><img src="img/slide-6.svg" width="300"></kbd> <kbd><img src="img/slide-7.svg" width="300"></kbd> <kbd><img src="img/slide-8.svg" width="300"></kbd> <kbd><img src="img/slide-9.svg" width="300"></kbd>
