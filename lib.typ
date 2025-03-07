@@ -3,6 +3,7 @@
   front-slide,
   table-of-contents,
   title-slide,
+  cols,
   slide,
   focus-slide,
   blank-slide,

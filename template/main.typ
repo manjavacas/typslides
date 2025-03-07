@@ -1,4 +1,4 @@
-#import "@preview/typslides:1.2.4": *
+#import "@preview/typslides:1.2.5": *
 
 // Project configuration
 #show: typslides.with(
@@ -54,6 +54,20 @@
     theme: "bluey",
   )
   ```
+]
+
+// Columns
+#slide(title: "Columns")[
+
+  #cols(columns: (2fr, 1fr, 2fr), gutter: 2em)[
+    #grayed[Columns can be included using `#cols[...][...]`]
+  ][
+    #grayed[And this is]
+  ][
+    #grayed[an example.]
+  ]
+
+  - Custom spacing: `#cols(columns: (2fr, 1fr, 2fr), gutter: 2em)[...]`
 ]
 
 // Slide with title
