@@ -206,7 +206,7 @@
 
     if sections.len() == 0 {
       let subsections = query(<subsection>)
-      pad(enum(..subsections.map(subsection => link(subsection.location(), subsection))))
+      pad(enum(..subsections.map(subsection => link(subsection.location(), subsection.value))))
     } else {
       pad(enum(..sections.map(section => {
         let section_loc = section.location()
