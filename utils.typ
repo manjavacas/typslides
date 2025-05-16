@@ -43,7 +43,7 @@
 
 //************************************************************************\\
 
-#let _slide-header(title, color) = {
+#let _slide-header(title, outlined, color) = {
   rect(
     fill: color,
     width: 100%,
@@ -53,7 +53,11 @@
       .95cm
     },
     inset: .6cm,
-    text(white, weight: "semibold", size: 24pt)[#h(.1cm) #title],
+    if outlined {
+      text(white, weight: "semibold", size: 24pt)[#h(.1cm) #title #metadata(title) <subsection>]
+    } else {
+      text(white, weight: "semibold", size: 24pt)[#h(.1cm) #title]
+    }
   )
 }
 
