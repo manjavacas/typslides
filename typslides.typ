@@ -8,7 +8,11 @@
   theme: "bluey",
   body,
 ) = {
-  theme-color.update(_theme-colors.at(theme))
+  if type(theme) == str {
+    theme-color.update(_theme-colors.at(theme))
+  } else {
+    theme-color.update(theme)
+  }
 
   set text(font: "Fira Sans")
   set page(paper: "presentation-" + ratio, fill: white)
