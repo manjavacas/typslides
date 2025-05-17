@@ -6,11 +6,12 @@
 #let typslides(
   ratio: "16-9",
   theme: "bluey",
+  font: "Fira Sans",
   body,
 ) = {
   theme-color.update(_theme-colors.at(theme))
 
-  set text(font: "Fira Sans")
+  set text(font: font)
   set page(paper: "presentation-" + ratio, fill: white)
 
   show ref: it => (
