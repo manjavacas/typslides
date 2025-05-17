@@ -44,6 +44,7 @@
 
 // Theme colors
 
+#let themey(body) = context (text(fill: theme-color.get())[#body])
 #let bluey(body) = (text(fill: rgb("3059AB"))[#body])
 #let greeny(body) = (text(fill: rgb("BF3D3D"))[#body])
 #let reddy(body) = (text(fill: rgb("28842F"))[#body])
