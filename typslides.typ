@@ -41,8 +41,8 @@
 // Theme colors
 
 #let bluey(body) = (text(fill: rgb("3059AB"))[#body])
-#let greeny(body) = (text(fill: rgb("BF3D3D"))[#body])
-#let reddy(body) = (text(fill: rgb("28842F"))[#body])
+#let greeny(body) = (text(fill: rgb("28842F"))[#body])
+#let reddy(body) = (text(fill: rgb("BF3D3D"))[#body])
 #let yelly(body) = (text(fill: rgb("C4853D"))[#body])
 #let purply(body) = (text(fill: rgb("862A70"))[#body])
 #let dusky(body) = (text(fill: rgb("1F4289"))[#body])
