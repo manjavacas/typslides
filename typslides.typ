@@ -8,7 +8,11 @@
   theme: "bluey",
   body,
 ) = {
-  theme-color.update(_theme-colors.at(theme))
+  if type(theme) == str {
+    theme-color.update(_theme-colors.at(theme))
+  } else {
+    theme-color.update(theme)
+  }
 
   set text(font: "Fira Sans")
   set page(paper: "presentation-" + ratio, fill: white)
@@ -40,6 +44,7 @@
 
 // Theme colors
 
+#let themey(body) = context (text(fill: theme-color.get())[#body])
 #let bluey(body) = (text(fill: rgb("3059AB"))[#body])
 #let greeny(body) = (text(fill: rgb("28842F"))[#body])
 #let reddy(body) = (text(fill: rgb("BF3D3D"))[#body])
