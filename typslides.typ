@@ -229,7 +229,7 @@
           selector(<section>).after(section_loc, inclusive: false)
         ))
         if subsections.len() != 0 {
-          [#link(section_loc, section.value) <toc> + #list(
+          [#link(section_loc, section.value) <toc> #list(
             ..subsections.map(subsection => [#link(subsection.location(),
             subsection.value) <toc>])
           )]
