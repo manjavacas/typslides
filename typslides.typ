@@ -7,6 +7,7 @@
   ratio: "16-9",
   theme: "bluey",
   font: "Fira Sans",
+  link-style: "color",
   body,
 ) = {
   if type(theme) == str {
@@ -26,7 +27,15 @@
 
   show link: it => (
     context {
-      text(fill: theme-color.get())[#it]
+      if it.has("label") {
+        text(fill: theme-color.get())[#it]
+      } else if link-style == "underline" {
+        underline(stroke: theme-color.get())[#it]
+      } else if link-style == "both" {
+        text(fill: theme-color.get(), underline[#it])
+      } else {
+        text(fill: theme-color.get())[#it]
+      }
     }
   )
 
@@ -212,7 +221,7 @@
 
     if sections.len() == 0 {
       let subsections = query(<subsection>)
-      pad(enum(..subsections.map(subsection => link(subsection.location(), subsection.value))))
+      pad(enum(..subsections.map(subsection => [#link(subsection.location(), subsection.value) <toc>])))
     } else {
       pad(enum(..sections.map(section => {
         let section_loc = section.location()
@@ -220,12 +229,12 @@
           selector(<section>).after(section_loc, inclusive: false)
         ))
         if subsections.len() != 0 {
-          link(section_loc, section.value) + list(
-            ..subsections.map(subsection => link(subsection.location(),
-            subsection.value))
-          )
+          [#link(section_loc, section.value) <toc> + #list(
+            ..subsections.map(subsection => [#link(subsection.location(),
+            subsection.value) <toc>])
+          )]
         } else {
-          link(section.location(), section.value)
+          [#link(section.location(), section.value) <toc>]
         }
       })))
     }
