@@ -6,6 +6,7 @@
 #let typslides(
   ratio: "16-9",
   theme: "bluey",
+  link-style: "color",
   body,
 ) = {
   theme-color.update(_theme-colors.at(theme))
@@ -21,7 +22,15 @@
 
   show link: it => (
     context {
-      text(fill: theme-color.get())[#it]
+      if it.has("label") {
+        text(fill: theme-color.get())[#it]
+      } else if link-style == "underline" {
+        underline(stroke: theme-color.get())[#it]
+      } else if link-style == "both" {
+        text(fill: theme-color.get(), underline[#it])
+      } else {
+        text(fill: theme-color.get())[#it]
+      }
     }
   )
 
@@ -203,7 +212,7 @@
     show linebreak: none
 
     let sections = sections.final()
-    pad(enum(..sections.map(section => link(section.loc, section.body))))
+    pad(enum(..sections.map(section => [#link(section.loc, section.body) <toc>])))
 
     pagebreak()
   }
