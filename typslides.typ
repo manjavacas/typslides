@@ -6,6 +6,7 @@
 #let typslides(
   ratio: "16-9",
   theme: "bluey",
+  font: "Fira Sans",
   body,
 ) = {
   if type(theme) == str {
@@ -14,7 +15,7 @@
     theme-color.update(theme)
   }
 
-  set text(font: "Fira Sans")
+  set text(font: font)
   set page(paper: "presentation-" + ratio, fill: white)
 
   show ref: it => (
