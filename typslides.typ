@@ -6,12 +6,17 @@
 #let typslides(
   ratio: "16-9",
   theme: "bluey",
+  font: "Fira Sans",
   link-style: "color",
   body,
 ) = {
-  theme-color.update(_theme-colors.at(theme))
+  if type(theme) == str {
+    theme-color.update(_theme-colors.at(theme))
+  } else {
+    theme-color.update(theme)
+  }
 
-  set text(font: "Fira Sans")
+  set text(font: font)
   set page(paper: "presentation-" + ratio, fill: white)
 
   show ref: it => (
@@ -49,9 +54,10 @@
 
 // Theme colors
 
+#let themey(body) = context (text(fill: theme-color.get())[#body])
 #let bluey(body) = (text(fill: rgb("3059AB"))[#body])
-#let greeny(body) = (text(fill: rgb("BF3D3D"))[#body])
-#let reddy(body) = (text(fill: rgb("28842F"))[#body])
+#let greeny(body) = (text(fill: rgb("28842F"))[#body])
+#let reddy(body) = (text(fill: rgb("BF3D3D"))[#body])
 #let yelly(body) = (text(fill: rgb("C4853D"))[#body])
 #let purply(body) = (text(fill: rgb("862A70"))[#body])
 #let dusky(body) = (text(fill: rgb("1F4289"))[#body])
@@ -231,7 +237,7 @@
 
     set align(left + horizon)
 
-    [= #smallcaps(body)]
+    [#heading(depth: 1, smallcaps(body)) #metadata(body) <section>]
 
     _divider(color: theme-color.get())
 
@@ -267,6 +273,7 @@
 #let slide(
   title: none,
   back-color: white,
+  outlined: false,
   body,
 ) = (
   context {
@@ -296,7 +303,7 @@
       } else {
         (x: 1.6cm, top: 1.75cm, bottom: 1.2cm)
       },
-      background: place(_slide-header(title, theme-color.get())),
+      background: place(_slide-header(title, outlined, theme-color.get())),
     )
 
     set list(marker: text(theme-color.get(), [•]))
