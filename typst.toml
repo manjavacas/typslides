@@ -1,6 +1,6 @@
 [package]
 name = "typslides"
-version = "1.2.5"
+version = "1.2.6"
 entrypoint = "lib.typ"
 compiler = "0.13.0"
 authors = ["Antonio Manjavacas <https://github.com/manjavacas>"]
@@ -9,7 +9,7 @@ description = "Minimalistic Typst slides."
 repository = "https://github.com/manjavacas/typslides"
 keywords = ["slides", "presentation", "diapositives"]
 categories = ["presentation", "layout", "components"]
-exclude = ["img"]
+exclude = ["img", ".github"]
 
 [template]
 path = "template"
