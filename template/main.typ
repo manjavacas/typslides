@@ -1,9 +1,11 @@
-#import "@preview/typslides:1.2.5": *
+#import "@preview/typslides:1.2.6": *
 
 // Project configuration
 #show: typslides.with(
   ratio: "16-9",
   theme: "bluey",
+  font: "Fira Sans",
+  link-style: "color",
 )
 
 // The front slide is the first slide of your presentation
@@ -26,7 +28,9 @@
 #slide[
   - This is a simple `slide` with no title.
   - #stress("Bold and coloured") text by using `#stress(text)`.
-  - Sample link: #link("typst.app")
+  - Sample link: #link("typst.app").
+    - Link styling using `link-style`: `"color"`, `"underline"`, `"both"`
+  - Font selection using `font: "Fira Sans"`.
 
   #framed[This text has been written using `#framed(text)`. The background color of the box is customisable.]
 
@@ -52,8 +56,22 @@
   #show: typslides.with(
     ratio: "16-9",
     theme: "bluey",
+    ...
   )
   ```
+
+  - Or just use *your own theme color*:
+    - `theme: rgb("30500B")`
+]
+
+// Slide with title
+#slide(title: "Outlined slide", outlined: true)[
+  - Outline slides with `outlined: true`.
+
+  #grayed([This is a `#grayed` text. Useful for equations.])
+  #grayed($ P_t = alpha - 1 / (sqrt(x) + f(y)) $)
+
+
 ]
 
 // Columns
@@ -68,15 +86,9 @@
   ]
 
   - Custom spacing: `#cols(columns: (2fr, 1fr, 2fr), gutter: 2em)[...]`
-]
 
-// Slide with title
-#slide(title: "This is the slide title")[
-  #grayed([This is a `#grayed` text. Useful for equations.])
-  #grayed($ P_t = alpha - 1 / (sqrt(x) + f(y)) $)
-
-  Sample references: @typst, @typslides.
-  - Add your #stress[bibliography slide]!
+  - Sample references: @typst, @typslides.
+    - Add a #stress[bibliography slide]...
 
     1. `#let bib = bibliography("you_bibliography_file.bib")`
     2. `#bibliography-slide(bib)`
