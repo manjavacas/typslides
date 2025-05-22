@@ -207,8 +207,27 @@
 
     show linebreak: none
 
-    let sections = sections.final()
-    pad(enum(..sections.map(section => link(section.loc, section.body))))
+    let sections = query(<section>)
+
+    if sections.len() == 0 {
+      let subsections = query(<subsection>)
+      pad(enum(..subsections.map(subsection => link(subsection.location(), subsection.value))))
+    } else {
+      pad(enum(..sections.map(section => {
+        let section_loc = section.location()
+        let subsections = query(selector(<subsection>).after(section_loc).before(
+          selector(<section>).after(section_loc, inclusive: false)
+        ))
+        if subsections.len() != 0 {
+          link(section_loc, section.value) + list(
+            ..subsections.map(subsection => link(subsection.location(),
+            subsection.value))
+          )
+        } else {
+          link(section.location(), section.value)
+        }
+      })))
+    }
 
     pagebreak()
   }
@@ -227,7 +246,7 @@
 
     set align(left + horizon)
 
-    [= #smallcaps(body)]
+    [#heading(depth: 1, smallcaps(body)) #metadata(body) <section>]
 
     _divider(color: theme-color.get())
 
@@ -263,6 +282,7 @@
 #let slide(
   title: none,
   back-color: white,
+  outlined: false,
   body,
 ) = (
   context {
@@ -292,7 +312,7 @@
       } else {
         (x: 1.6cm, top: 1.75cm, bottom: 1.2cm)
       },
-      background: place(_slide-header(title, theme-color.get())),
+      background: place(_slide-header(title, outlined, theme-color.get())),
     )
 
     set list(marker: text(theme-color.get(), [•]))
