@@ -278,7 +278,6 @@
       weight: "semibold",
       size: text-size,
       fill: text-color,
-      font: "Fira Sans",
     )
 
     set align(center + horizon)
