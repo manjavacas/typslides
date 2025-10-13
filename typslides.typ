@@ -2,14 +2,19 @@
 
 #let theme-color = state("theme-color", none)
 #let sections = state("sections", ())
+#let show-page-numbers = state("show-page-numbers", true)
 
 #let typslides(
   ratio: "16-9",
   theme: "bluey",
   font: "Fira Sans",
   link-style: "color",
+  show-page-numbers: true,
   body,
 ) = {
+  // Update states
+  show-page-numbers.update(show-page-numbers)
+
   if type(theme) == str {
     theme-color.update(_theme-colors.at(theme))
   } else {
@@ -295,27 +300,28 @@
   body,
 ) = (
   context {
-    let page-num = context counter(page).display(
-      "1/1",
-      both: true,
-    )
+    let page-num = if show-page-numbers.get() {
+      context counter(page).display("1/1", both: true)
+    } else {
+      none
+    }
 
     set page(
       fill: back-color,
-      header-ascent: if title != none {
-        65%
-      } else {
-        66%
-      },
-      header: [
-        #align(right)[
-          #text(
-            fill: white,
-            weight: "semibold",
-            size: 12pt,
-          )[#page-num]
+      header-ascent: if title != none { 65% } else { 66% },
+      header: if show-page-numbers.get() {
+        [
+          #align(right)[
+            #text(
+              fill: white,
+              weight: "semibold",
+              size: 12pt,
+            )[#page-num]
+          ]
         ]
-      ],
+      } else {
+        []
+      },
       margin: if title != none {
         (x: 1.6cm, top: 2.5cm, bottom: 1.2cm)
       } else {
@@ -325,14 +331,11 @@
     )
 
     set list(marker: text(theme-color.get(), [•]))
-
     set enum(numbering: (it => context text(fill: theme-color.get())[*#it.*]))
-
     set text(size: 20pt)
     set par(justify: true)
     set align(horizon)
-
-    v(0cm) // avoids header breaking if body is empty
+    v(0cm)
     body
   }
 )
@@ -341,27 +344,30 @@
 
 #let blank-slide(body) = (
   context {
-    let page-num = context counter(page).display(
-      "1/1",
-      both: true,
-    )
+    let page-num = if show-page-numbers.get() {
+      context counter(page).display("1/1", both: true)
+    } else {
+      none
+    }
 
     set page(
-      header: [
-        #align(right)[
-          #text(
-            fill: theme-color.get(),
-            weight: "semibold",
-            size: 12pt,
-          )[#page-num]
+      header: if show-page-numbers.get() {
+        [
+          #align(right)[
+            #text(
+              fill: theme-color.get(),
+              weight: "semibold",
+              size: 12pt,
+            )[#page-num]
+          ]
         ]
-      ],
+      } else {
+        []
+      },
     )
 
     set list(marker: text(theme-color.get(), [•]))
-
     set enum(numbering: (it => context text(fill: theme-color.get())[*#it.*]))
-
     set text(size: 20pt)
     set par(justify: true)
     set align(horizon)
@@ -378,9 +384,7 @@
   context {
     set text(size: 19pt)
     set par(justify: true)
-
     set bibliography(title: text(size: 30pt)[#smallcaps(title) #v(-.85cm) #_divider(color: theme-color.get()) #v(.5cm)])
-
     bib-call
   }
 )
