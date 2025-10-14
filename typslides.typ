@@ -12,7 +12,7 @@
   show-page-numbers: true,
   body,
 ) = {
-  // Update states
+  
   show-page-numbers.update(show-page-numbers)
 
   if type(theme) == str {
