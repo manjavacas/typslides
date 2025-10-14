@@ -26,7 +26,7 @@ Default <strong>themes</strong>:
 This is a simple usage example:
 
 ```typst
-#import "@preview/typslides:1.2.6": *
+#import "@preview/typslides:1.2.8": *
 
 // Project configuration
 #show: typslides.with(
