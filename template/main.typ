@@ -1,4 +1,4 @@
-#import "@preview/typslides:1.2.7": *
+#import "@preview/typslides:1.2.8": *
 
 // Project configuration
 #show: typslides.with(
