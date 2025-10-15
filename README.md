@@ -34,6 +34,8 @@ This is a simple usage example:
   theme: "bluey",
   font: "Fira Sans",
   link-style: "color",
+  show-progress: true,
+  progress-height: 3pt,
 )
 
 // The front slide is the first slide of your presentation
@@ -124,6 +126,74 @@ This is a simple usage example:
 #bibliography-slide(bib)
 
 ```
+
+## Progress bar
+
+Enable a Beamer-like progress bar that shows your position within the deck.
+
+- Toggle with `show-progress: true | false` (default: `false`).
+- Thickness with `progress-height: <length>` (default: `3pt`).
+- Color is the current theme color; on focus slides it uses white for contrast.
+
+Example:
+
+```typst
+#show: typslides.with(
+  theme: "reddy",
+  show-progress: true,
+  progress-height: 4pt,
+)
+```
+
+# Development Tools
+
+## Generating SVG Slides
+
+Typslides includes automation tools to generate individual SVG files from your presentation for documentation or showcase purposes.
+
+### Using Make (recommended)
+
+```bash
+# Generate SVG slides
+make slides
+
+# Generate and optimize SVG slides (requires svgo)
+make slides-optimize
+
+# Check dependencies
+make check
+
+# Clean temporary files
+make clean
+
+# Show all available commands
+make help
+```
+
+### Using the script directly
+
+```bash
+# Basic generation
+./scripts/generate-slides.sh
+
+# With optimization
+./scripts/generate-slides.sh --optimize
+```
+
+### Requirements
+
+- **Required**: [Typst](https://github.com/typst/typst) compiler
+- **Optional**: 
+  - `svgo` for SVG optimization (`npm install -g svgo`)
+  - `pdfinfo` for page count detection (from poppler-utils)
+
+### How it works
+
+1. Compiles `template/main.typ` to PDF
+2. Extracts each page as an individual SVG file
+3. Saves files as `img/slide-1.svg`, `img/slide-2.svg`, etc.
+4. Optionally optimizes SVGs with svgo
+5. Reports generation statistics
 
 # Sample slides
 
