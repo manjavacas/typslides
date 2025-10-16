@@ -26,23 +26,23 @@ Default <strong>themes</strong>:
 This is a simple usage example:
 
 ```typst
-#import "@preview/typslides:1.2.8": *
+#import "@preview/typslides:1.3.0": *
 
 // Project configuration
 #show: typslides.with(
   ratio: "16-9",
   theme: "bluey",
   font: "Fira Sans",
+  font-size: 20pt,
   link-style: "color",
   show-progress: true,
-  progress-height: 3pt,
 )
 
 // The front slide is the first slide of your presentation
 #front-slide(
   title: "This is a sample presentation",
   subtitle: [Using _typslides_],
-  authors: "Antonio Manjavacas",
+  authors: "A. Manjavacas",
   info: [#link("https://github.com/manjavacas/typslides")],
 )
 
@@ -60,7 +60,7 @@ This is a simple usage example:
   - #stress("Bold and coloured") text by using `#stress(text)`.
   - Sample link: #link("typst.app").
     - Link styling using `link-style`: `"color"`, `"underline"`, `"both"`
-  - Font selection using `font: "Fira Sans"`.
+  - Font selection using `font: "Fira Sans"`, `size: 21pt`.
 
   #framed[This text has been written using `#framed(text)`. The background color of the box is customisable.]
 
@@ -87,6 +87,7 @@ This is a simple usage example:
   //   theme: "bluey",
   //   ...
   // )
+  
 
   - Or just use *your own theme color*:
     - `theme: rgb("30500B")`
@@ -94,6 +95,10 @@ This is a simple usage example:
 
 // Slide with title
 #slide(title: "Outlined slide", outlined: true)[
+  - Check out the *progress bar* at the bottom of the slide.
+
+    #h(1cm) `show-progress: true`
+
   - Outline slides with `outlined: true`.
 
   #grayed([This is a `#grayed` text. Useful for equations.])
@@ -126,74 +131,6 @@ This is a simple usage example:
 #bibliography-slide(bib)
 
 ```
-
-## Progress bar
-
-Enable a Beamer-like progress bar that shows your position within the deck.
-
-- Toggle with `show-progress: true | false` (default: `false`).
-- Thickness with `progress-height: <length>` (default: `3pt`).
-- Color is the current theme color; on focus slides it uses white for contrast.
-
-Example:
-
-```typst
-#show: typslides.with(
-  theme: "reddy",
-  show-progress: true,
-  progress-height: 4pt,
-)
-```
-
-# Development Tools
-
-## Generating SVG Slides
-
-Typslides includes automation tools to generate individual SVG files from your presentation for documentation or showcase purposes.
-
-### Using Make (recommended)
-
-```bash
-# Generate SVG slides
-make slides
-
-# Generate and optimize SVG slides (requires svgo)
-make slides-optimize
-
-# Check dependencies
-make check
-
-# Clean temporary files
-make clean
-
-# Show all available commands
-make help
-```
-
-### Using the script directly
-
-```bash
-# Basic generation
-./scripts/generate-slides.sh
-
-# With optimization
-./scripts/generate-slides.sh --optimize
-```
-
-### Requirements
-
-- **Required**: [Typst](https://github.com/typst/typst) compiler
-- **Optional**: 
-  - `svgo` for SVG optimization (`npm install -g svgo`)
-  - `pdfinfo` for page count detection (from poppler-utils)
-
-### How it works
-
-1. Compiles `template/main.typ` to PDF
-2. Extracts each page as an individual SVG file
-3. Saves files as `img/slide-1.svg`, `img/slide-2.svg`, etc.
-4. Optionally optimizes SVGs with svgo
-5. Reports generation statistics
 
 # Sample slides
 
