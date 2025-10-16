@@ -1,18 +1,20 @@
-#import "@preview/typslides:1.2.8": *
+#import "@preview/typslides:1.3.0": *
 
 // Project configuration
 #show: typslides.with(
   ratio: "16-9",
   theme: "bluey",
   font: "Fira Sans",
+  font-size: 20pt,
   link-style: "color",
+  show-progress: true,
 )
 
 // The front slide is the first slide of your presentation
 #front-slide(
   title: "This is a sample presentation",
   subtitle: [Using _typslides_],
-  authors: "Antonio Manjavacas",
+  authors: "A. Manjavacas",
   info: [#link("https://github.com/manjavacas/typslides")],
 )
 
@@ -30,7 +32,7 @@
   - #stress("Bold and coloured") text by using `#stress(text)`.
   - Sample link: #link("typst.app").
     - Link styling using `link-style`: `"color"`, `"underline"`, `"both"`
-  - Font selection using `font: "Fira Sans"`.
+  - Font selection using `font: "Fira Sans"`, `size: 21pt`.
 
   #framed[This text has been written using `#framed(text)`. The background color of the box is customisable.]
 
@@ -66,6 +68,10 @@
 
 // Slide with title
 #slide(title: "Outlined slide", outlined: true)[
+  - Check out the *progress bar* at the bottom of the slide.
+
+    #h(1cm) `show-progress: true`
+
   - Outline slides with `outlined: true`.
 
   #grayed([This is a `#grayed` text. Useful for equations.])
