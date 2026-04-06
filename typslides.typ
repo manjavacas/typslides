@@ -471,6 +471,7 @@
   title: none,
   back-color: none,
   outlined: false,
+  margin: none,
   body,
 ) = context {
   let bg-color = if back-color != none { back-color } else { default-back-color.get() }
@@ -480,7 +481,9 @@
     fill: bg-color,
     header-ascent: if title != none { 65% } else { 66% },
     header: [],
-    margin: if title != none {
+    margin: if margin != none {
+      margin
+    } else if title != none {
       (x: 1.6cm, top: 2.5cm, bottom: 1.2cm)
     } else {
       (x: 1.6cm, top: 1.75cm, bottom: 1.2cm)
