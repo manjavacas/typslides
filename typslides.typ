@@ -316,6 +316,7 @@
   authors: none,
   info: none,
   back-color: none,
+  margin: auto,
 ) = context {
   let bg-color = if back-color != none { back-color } else { default-back-color.get() }
   
@@ -327,6 +328,7 @@
     authors,
     info,
     theme-color.get(),
+    margin,
   )
 }
 

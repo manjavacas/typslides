@@ -188,9 +188,10 @@
   authors,
   info,
   theme-color,
+  margin,
 ) = {
   set align(left + horizon)
-  set page(footer: none)
+  set page(footer: none, margin: margin)
 
   text(40pt, weight: "bold")[#smallcaps(title)]
   v(-.95cm)
