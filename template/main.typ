@@ -1,4 +1,4 @@
-#import "@preview/typslides:1.3.5": *
+#import "@preview/typslides:1.4.0": *
 
 // Project configuration
 #show: typslides.with(
@@ -77,7 +77,21 @@
   #grayed([This is a `#grayed` text. Useful for equations.])
   #grayed($ P_t = alpha - 1 / (sqrt(x) + f(y)) $)
 
+]
 
+// Dynamic display
+#slide(title: "Pause, only and uncover")[
+
+  #stress[Dynamic display] with `#pause`, `#only` and `#uncover`...
+
+  #only(1)[*Frame 1*: this text is replaced later (`#only`).]
+  #only("2-")[*Frames 2 and 3*: this is the replacement (`#only`).]
+  #uncover(3)[*Frame 3*: this line was invisible, but its space was reserved (`#uncover`).]
+
+  #pause
+  - Appears in *Frame 2* (`#pause`).
+  #pause
+  - Appears in *Frame 3* (`#pause`).
 ]
 
 // Columns
