@@ -220,7 +220,7 @@
 // Returns: A centered gray block with rounded corners
 #let grayed(
   text-size: 24pt,
-  fill-color: rgb("#F3F2F0"),
+  fill-color: color.silver.lighten(50%),
   content,
 ) = {
   set align(center + horizon)
