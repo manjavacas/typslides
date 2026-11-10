@@ -8,6 +8,5 @@
 // License: GPL-3.0-or-later
 
 #import "typslides.typ": (
-  bibliography-slide, blank-slide, bluey, cols, dusky, focus-slide, framed, front-slide, grayed, greeny, purply, reddy,
-  slide, stress, table-of-contents, title-slide, typslides, yelly,
+  bibliography-slide, blank-slide, bluey, cols, dusky, focus-slide, framed, front-slide, grayed, greeny, purply, reddy, slide, stress, table-of-contents, title-slide, typslides, yelly, pause, only, uncover,
 )
